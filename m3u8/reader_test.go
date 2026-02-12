@@ -27,6 +27,7 @@ func TestMultiXMaps(t *testing.T) {
 	is.NoErr(err) // must create playlist
 	err = p.DecodeFrom(bufio.NewReader(f), false)
 	is.NoErr(err) // must decode playlist
+	is.True(p.Map != nil)
 	is.True(p.Segments[0].Map != nil)
 	is.True(p.Segments[1].Map == nil)
 	is.True(p.Segments[2].Map != nil)

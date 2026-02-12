@@ -1170,10 +1170,10 @@ func decodeLineOfMediaPlaylist(p *MediaPlaylist, state *decodingState, line stri
 		if err != nil {
 			return fmt.Errorf("error parsing EXT-X-MAP: %w", err)
 		}
-		p.Map = xMap
-		if state.lastReadMap == nil || !state.lastReadMap.Equal(xMap) {
-			state.lastReadMap = xMap
+		if state.lastReadMap == nil && p.Count() == 0 {
+			p.Map = xMap
 		}
+		state.lastReadMap = xMap
 	case !state.tagProgramDateTime && strings.HasPrefix(line, "#EXT-X-PROGRAM-DATE-TIME:"):
 		state.tagProgramDateTime = true
 		state.listType = MEDIA
