@@ -1272,11 +1272,11 @@ func (p *MediaPlaylist) SetTargetDuration(duration uint) {
 }
 
 // SetDefaultKey sets encryption key to appear before segments in the media playlist.
-func (p *MediaPlaylist) SetDefaultKey(method, uri, iv, keyformat, keyformatversions string) error {
+func (p *MediaPlaylist) SetDefaultKey(method, uri, keyid, iv, keyformat, keyformatversions string) error {
 	if keyformat != "" || keyformatversions != "" {
 		updateVersion(&p.ver, 5) // [Protocol Version Compatibility]
 	}
-	p.Keys = append(p.Keys, Key{method, uri, iv, keyformat, keyformatversions})
+	p.Keys = append(p.Keys, Key{method, uri, keyid, iv, keyformat, keyformatversions})
 	return nil
 }
 

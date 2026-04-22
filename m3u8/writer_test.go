@@ -266,7 +266,7 @@ func TestSetDefaultKeyForMediaPlaylist(t *testing.T) {
 	for _, test := range tests {
 		p, e := NewMediaPlaylist(3, 5)
 		is.NoErr(e) // Create media playlist should be successful
-		e = p.SetDefaultKey("AES-128", "https://example.com", "iv", test.KeyFormat,
+		e = p.SetDefaultKey("AES-128", "https://example.com", "", "iv", test.KeyFormat,
 			test.KeyFormatVersions)
 		is.NoErr(e)                         // Set key to a media playlist should be successful
 		is.Equal(p.ver, test.ExpectVersion) // Check key playlist version
