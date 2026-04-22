@@ -1294,7 +1294,7 @@ func (p *MediaPlaylist) SetIframeOnly() {
 }
 
 // SetKey sets encryption key for the current (and following) segment of media playlist
-func (p *MediaPlaylist) SetKey(method, uri, iv, keyformat, keyformatversions string) error {
+func (p *MediaPlaylist) SetKey(method, uri, keyid, iv, keyformat, keyformatversions string) error {
 	if p.count == 0 {
 		return ErrPlaylistEmpty
 	}
@@ -1303,7 +1303,7 @@ func (p *MediaPlaylist) SetKey(method, uri, iv, keyformat, keyformatversions str
 		updateVersion(&p.ver, 5) // [Protocol Version Compatibility]
 	}
 
-	p.Segments[p.last()].Keys = append(p.Segments[p.last()].Keys, Key{method, uri, iv, keyformat, keyformatversions})
+	p.Segments[p.last()].Keys = append(p.Segments[p.last()].Keys, Key{method, uri, keyid, iv, keyformat, keyformatversions})
 	return nil
 }
 
