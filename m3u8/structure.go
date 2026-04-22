@@ -321,6 +321,7 @@ type SCTE struct {
 type Key struct {
 	Method            string // METHOD parameter
 	URI               string // URI parameter
+	KEYID             string // KEYID parameter
 	IV                string // IV parameter
 	Keyformat         string // KEYFORMAT parameter
 	Keyformatversions string // KEYFORMATVERSIONS parameter

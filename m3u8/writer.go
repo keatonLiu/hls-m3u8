@@ -555,6 +555,9 @@ func writeKey(tag string, buf *bytes.Buffer, key *Key) {
 	buf.WriteString(key.Method)
 	if key.Method != "NONE" {
 		writeQuoted(buf, "URI", key.URI)
+		if key.KEYID != "" {
+			writeUnQuoted(buf, "KEYID", key.KEYID)
+		}
 		if key.IV != "" {
 			writeUnQuoted(buf, "IV", key.IV)
 		}

@@ -868,6 +868,8 @@ func parseKeyParams(parameters string) *Key {
 			key.Method = attr.Val // NONE, AES-128, SAMPLE-AES, SAMPLE-AES-CTR
 		case "URI":
 			key.URI = deQuote(attr.Val)
+		case "KEYID":
+			key.KEYID = attr.Val
 		case "IV":
 			key.IV = attr.Val // Hex value
 		case "KEYFORMAT":
